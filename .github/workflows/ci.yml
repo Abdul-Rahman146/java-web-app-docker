@@ -9,13 +9,17 @@ on:
       - dev
 
 jobs:
-  build:
+  check_out:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
