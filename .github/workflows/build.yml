@@ -1,0 +1,31 @@
+name: build package
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  checkout-code:
+    runs-on: ubuntu:latest
+
+    steps:
+      - name: checkout code
+        uses: action/checkout@v2
+
+  build:
+    runs-on: ubuntu:latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  
+          distribution: 'adopt'
+
+      - name: Build with Maven
+        run: mvn -B package
+       
